@@ -1,5 +1,10 @@
 import { api } from "./index";
-import { FetchUsersParams, User, UsersResponse } from "../types/User";
+import {
+  FetchUsersParams,
+  SearchQueryParams,
+  User,
+  UsersResponse,
+} from "../types/User";
 
 /**
  * Asynchronous function `fetchUsers` performs an HTTP request to retrieve a list of users
@@ -37,5 +42,19 @@ export const fetchUsers = async ({
  */
 export const fetchUser = async (id: number): Promise<User> => {
   const response = await api.get(`/users/${id}`);
+  return response.data;
+};
+
+/**
+ * Asynchronous function `searchUser` performs an HTTP request to search for users based on a specific
+ * key and value.
+ *
+ * @param key - The key to search for (e.g., "firstName", "lastName", "username").
+ */
+export const searchUser = async ({
+  key = "username",
+  value,
+}: SearchQueryParams): Promise<UsersResponse> => {
+  const response = await api.get(`/users/filter?key=${key}&value=${value}`);
   return response.data;
 };
