@@ -1,3 +1,4 @@
-export const USER_LIMIT = 10;
+export const USER_LIMIT = 20;
 
-export const SELECT_FIELDS = "id,firstName,lastName,email,age,gender,phone";
+export const DEFAULT_SELECT_FIELDS =
+  "id,firstName,lastName,age,gender,phone,address";
