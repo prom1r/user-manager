@@ -21,6 +21,10 @@ export interface FetchUsersParams {
   limit?: number | string | null;
   skip?: number | string | null;
   select?: string;
+  params?: {
+    key: string;
+    value: string;
+  };
 }
 
 export interface SearchQueryParams {

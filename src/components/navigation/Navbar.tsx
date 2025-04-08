@@ -15,7 +15,7 @@ const Navbar = () => {
   });
   const [showNoResultsPopup, setShowNoResultsPopup] = useState(false);
 
-  const { data } = useSearchUser(searchParams);
+  const { data, isLoading } = useSearchUser(searchParams);
 
   useEffect(() => {
     if (data && data.users.length === 0) {
@@ -23,10 +23,10 @@ const Navbar = () => {
     }
   }, [data]);
 
-  const handleSearchSubmit = () => {
+  const handleSearchSubmit = (param: string) => {
     const value = inputRef.current?.value;
     if (value) {
-      setSearchParams({ key: "username", value });
+      setSearchParams({ key: param, value });
       inputRef.current!.value = "";
     }
   };
@@ -38,6 +38,7 @@ const Navbar = () => {
           handleSearchSubmit={handleSearchSubmit}
           inputRef={inputRef}
           users={data?.users}
+          isLoading={isLoading}
         />
       </nav>
 
