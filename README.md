@@ -55,11 +55,10 @@ src/
 ├── api/ # API-запросы (fetchUsers, searchUser)
 ├── components/ # UI компоненты (Search, Filter, UserCard, Modal)
 ├── hooks/ # Кастомные хуки (useObserver, useInfiniteUsers)
-├── api/ # API-запросы (fetchUsers, searchUser)
 ├── pages/ # Основные страницы
-├── types/ # Типы TypeScript
 ├── routes/ # Маршруты для роутера
 ├── styles/ # Общие SCSS стили
+├── types/ # Типы TypeScript
 └── App.tsx # Точка входа
 
 ```
