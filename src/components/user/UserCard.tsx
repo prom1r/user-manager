@@ -11,7 +11,7 @@ const UserCard: React.FC<UserCardProps> = ({ user }) => {
       <h1>{user.username}</h1>
       <h2>{user.firstName}</h2>
       <h3>{user.lastName}</h3>
-      <p>{user.age}</p>
+      <p>{user.gender}</p>
       <p>{user.address.city}</p>
     </div>
   );

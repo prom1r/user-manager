@@ -5,23 +5,29 @@ import { SearchQueryParams, User, UsersResponse } from "../types/User";
 
 /**
  * Custom React Query hook for fetching users with infinite scrolling capability.
+ * @param searchParams - The key and value to search for
  */
-export const useInfiniteUsers = () => {
+export const useInfiniteUsers = (
+  searchParams: SearchQueryParams | undefined
+) => {
   return useInfiniteQuery<
     { users: User[]; nextCursor?: number | null },
     Error,
     { pages: { users: User[]; nextCursor?: number | null }[] },
-    ["infiniteUsers"],
+    ["infiniteUsers", SearchQueryParams | undefined],
     number | null | undefined
   >({
-    queryKey: ["infiniteUsers"],
+    queryKey: ["infiniteUsers", searchParams],
     initialPageParam: 0,
     queryFn: async ({ pageParam }) => {
+      const params = searchParams?.value ? searchParams : undefined;
+
       const cursor = pageParam ?? 0;
       const response = await fetchUsers({
         limit: USER_LIMIT,
         skip: pageParam,
         select: DEFAULT_SELECT_FIELDS,
+        params,
       });
 
       const { users, total } = response;

@@ -13,6 +13,7 @@ import {
  * @param limit - The number of users to retrieve (used to limit the output).
  * @param skip - The number of users to skip (used for pagination).
  * @param select - A comma-separated list of fields to include in the response (e.g., "id,name,email").
+ * @param searchParams - An object containing the key and value to search for.
  *
  * @returns Promise<UsersResponse> - A promise that resolves to user data and metadata.
  */
@@ -20,8 +21,12 @@ export const fetchUsers = async ({
   limit,
   skip,
   select,
+  params,
 }: FetchUsersParams): Promise<UsersResponse> => {
-  const response = await api.get("/users", {
+  const url = !params
+    ? "/users"
+    : `/users/filter?key=${params.key}&value=${params.value}`;
+  const response = await api.get(url, {
     params: {
       limit,
       skip,
