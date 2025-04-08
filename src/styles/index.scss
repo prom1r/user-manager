@@ -2,5 +2,10 @@
 
 body {
   margin: 0;
-  font-family: "Times New Roman", Times, serif;
+  font-family: "Roboto", Arial, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-black);
 }
