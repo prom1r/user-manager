@@ -1,15 +1,18 @@
+import Loader from "../Loader";
 import SearchResults from "./SearchResults";
 
 interface SearchContainerProps {
   inputRef?: React.Ref<HTMLInputElement>;
-  handleSearchSubmit: () => void;
+  handleSearchSubmit: (param: string) => void;
   users: any;
+  isLoading: boolean;
 }
 
 const SearchContainer: React.FC<SearchContainerProps> = ({
   inputRef,
   handleSearchSubmit,
   users,
+  isLoading,
 }) => {
   return (
     <div className={"search-container"}>
@@ -19,10 +22,13 @@ const SearchContainer: React.FC<SearchContainerProps> = ({
         ref={inputRef}
         className={"search-input"}
         onKeyDown={(e) => {
-          if (e.key === "Enter") handleSearchSubmit();
+          if (e.key === "Enter") {
+            handleSearchSubmit("username");
+          }
         }}
       />
-      <button onClick={handleSearchSubmit}>Search</button>
+      <button onClick={() => handleSearchSubmit("username")}>Search</button>
+      {isLoading && <Loader />}
       {users && users.length > 0 && (
         <div className="results-wrapper">
           <SearchResults users={users} />

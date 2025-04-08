@@ -1,12 +1,9 @@
 @mixin dropdown-box {
-  position: absolute;
+  flex-direction: column;
   border-radius: 5px;
   padding: 10px;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  z-index: 1;
-  top: 50px;
-  left: 20px;
   width: 250px;
 
   button {
@@ -33,6 +30,10 @@
 .search-container {
   flex: 1;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-direction: column;
 }
 
 .search-input {
@@ -44,13 +45,14 @@
 }
 
 button {
-  margin-left: 10px;
   font-size: var(--font-size-base);
   background-color: var(--color-active);
   color: var(--color-black);
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  width: 100px;
+  height: 30px;
   transition: background-color 0.3s ease-in-out;
   &:hover {
     background-color: var(--color-success);
