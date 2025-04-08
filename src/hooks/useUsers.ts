@@ -1,7 +1,7 @@
 import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
-import { fetchUser, fetchUsers } from "../api/queries";
+import { fetchUser, fetchUsers, searchUser } from "../api/queries";
 import { DEFAULT_SELECT_FIELDS, USER_LIMIT } from "../constants";
-import { User } from "../types/User";
+import { SearchQueryParams, User, UsersResponse } from "../types/User";
 
 /**
  * Custom React Query hook for fetching users with infinite scrolling capability.
@@ -49,5 +49,18 @@ export const useUser = (id: number) => {
     queryKey: ["user", id],
     queryFn: () => fetchUser(id),
     staleTime: 5 * 60 * 1000,
+  });
+};
+
+/**
+ * Custom React Query hook for searching for users based on a specific key and value.
+ * @param query - The key and value to search for
+ */
+export const useSearchUser = (query: SearchQueryParams) => {
+  return useQuery<UsersResponse>({
+    queryKey: ["searchUser", query],
+    queryFn: () => searchUser(query),
+    staleTime: 5 * 60 * 1000,
+    enabled: !!query.value,
   });
 };

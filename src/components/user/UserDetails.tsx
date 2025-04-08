@@ -1,9 +1,10 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useUser } from "../../hooks/useUsers";
 
 import "./UserDetails.scss";
 
 const UserDetails = () => {
+  const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
 
   const { data, isLoading, error } = useUser(+id!);
@@ -40,6 +41,9 @@ const UserDetails = () => {
           <strong>State:</strong> {data.address.state}
         </p>
       </div>
+      <button className="back-button" onClick={() => navigate("/")}>
+        HOME
+      </button>
     </div>
   );
 };

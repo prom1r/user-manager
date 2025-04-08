@@ -2,6 +2,7 @@ export interface User {
   id: number;
   firstName: string;
   lastName: string;
+  username: string;
   email: string;
   age: string;
   gender: string;
@@ -20,4 +21,9 @@ export interface FetchUsersParams {
   limit?: number | string | null;
   skip?: number | string | null;
   select?: string;
+}
+
+export interface SearchQueryParams {
+  key: string;
+  value: string;
 }
