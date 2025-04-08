@@ -51,17 +51,16 @@ npm run build
 
 ```
 
+```plaintext
 src/
-├── api/ # API-запросы (fetchUsers, searchUser)
-├── components/ # UI компоненты (Search, Filter, UserCard, Modal)
-├── hooks/ # Кастомные хуки (useObserver, useInfiniteUsers)
-├── pages/ # Основные страницы
-├── routes/ # Маршруты для роутера
-├── styles/ # Общие SCSS стили
-├── types/ # Типы TypeScript
-└── App.tsx # Точка входа
-
-```
+├── api/                  # API-запросы (fetchUsers, searchUser)
+├── components/           # UI компоненты (Search, Filter, UserCard, Modal)
+├── hooks/                # Кастомные хуки (useObserver, useInfiniteUsers)
+├── pages/                # Основные страницы
+├── routes/               # Маршруты для роутера
+├── styles/               # Общие SCSS стили
+├── types/                # Типы TypeScript
+└── App.tsx               # Точка входа
 
 ---
 
